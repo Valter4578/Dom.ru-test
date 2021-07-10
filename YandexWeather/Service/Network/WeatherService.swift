@@ -9,13 +9,12 @@ import Foundation
 import Moya
 
 enum WeatherService {
-    case weakWeather(Double, Double)
-    case hourWeater(Double, Double)
+    case hourWeater(Coordinates)
 }
 
 extension WeatherService: TargetType {
     var baseURL: URL {
-        guard let url = URL(string: "https://api.weather.yandex.ru/v2/") else { fatalError("Incorrect url") }
+        guard let url = URL(string: "https://api.weather.yandex.ru/v2") else { fatalError("Incorrect url") }
         return url
     }
     
@@ -33,19 +32,12 @@ extension WeatherService: TargetType {
     
     var task: Task {
         switch self {
-        case .hourWeater(let lat, let lon):
+        case .hourWeater(let coordinates):
             var params: [String: Any] = [:]
             params["hours"] = true
             params["lang"] = "ru_RU"
-            params["lat"] = lat
-            params["lon"] = lon
-            return .requestParameters(parameters: params, encoding: URLEncoding.default)
-        case .weakWeather(let lat, let lon):
-            var params: [String: Any] = [:]
-            params["hours"] = false
-            params["lang"] = "ru_RU"
-            params["lat"] = lat
-            params["lon"] = lon
+            params["lat"] = coordinates.lon
+            params["lon"] = coordinates.lon
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }

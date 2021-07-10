@@ -9,17 +9,16 @@ import Foundation
 import Moya
 
 protocol NetworkService {
-    func getHourForecast(complete: @escaping (ForecastInfo) -> ())
-    func getWeekForecase(complete: @escaping (ForecastInfo) -> ())
+    func getHourForecast(coordinates: Coordinates,complete: @escaping (Result<ForecastInfo, Error>) -> ())
 }
 
-class DefaultNetworkService {
+class DefaultNetworkService: NetworkService {
     // MARK:- Private properties
     private var provider = MoyaProvider<WeatherService>()
     
     // MARK:- Functions
-    func getHourForecast(lat: Double, lon: Double,complete: @escaping (Result<ForecastInfo, Error>) -> ()) {
-        provider.request(.hourWeater(lat, lon)) { response in
+    func getHourForecast(coordinates: Coordinates,complete: @escaping (Result<ForecastInfo, Error>) -> ()) {
+        provider.request(.hourWeater(coordinates)) { response in
             switch response {
             case .success(let result):
                 do {
@@ -35,23 +34,4 @@ class DefaultNetworkService {
             }
         }
     }
-    
-    func getWeekForecase(lat: Double, lon: Double, complete: @escaping (Result<ForecastInfo, Error>) -> ()) {
-        provider.request(.weakWeather(lat, lon)) { response in
-            switch response {
-            case .success(let result):
-                do {
-                    let forecast = try JSONDecoder().decode(ForecastInfo.self, from: result.data)
-                    complete(.success(forecast))
-                } catch {
-                    print(error)
-                    complete(.failure(error))
-                }
-            case .failure(let error):
-                print(error)
-                complete(.failure(error))
-            }
-        }
-    }
-    
 }
