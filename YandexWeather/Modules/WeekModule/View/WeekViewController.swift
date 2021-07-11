@@ -27,7 +27,7 @@ class WeekViewController: UIViewController, WeekView {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: presenter.cellId)
+        tableView.register(WeekTableViewCell.self, forCellReuseIdentifier: presenter.cellId)
         tableView.dataSource = self
         return tableView
     }()
@@ -79,15 +79,19 @@ extension WeekViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: presenter.cellId, for: indexPath)
-        let forecast = presenter.forecasts[indexPath.row]
-        cell.textLabel?.text = "\(forecast.day) - \(forecast.dayTemperature)"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: presenter.cellId, for: indexPath) as? WeekTableViewCell else { return UITableViewCell() }
+        cell.tempLabel.text = presenter.getForrmatedCellTitle(for: indexPath.row)
+        if let url = presenter.getImageUrl(for: indexPath.row) {
+            cell.iconImageView.load(from: url)
+        }
         return cell
     }    
 }
 
 // MARK:- UITableViewDelegate
 extension WeekViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }
 

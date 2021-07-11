@@ -14,7 +14,11 @@ class WeekAssembly {
         let networkService = DefaultNetworkService()
         let databaseService = DefaultDatabaseService()
         let locationService = LocationService()
-        let interactor = DefaultWeekInteractor(presenter: presenter, networkService: networkService, databaseService: databaseService, locationService: locationService)
+        let interactor = DefaultWeekInteractor(presenter: presenter,
+                                               networkService: networkService,
+                                               databaseService: databaseService,
+                                               locationService: locationService)
+        
         let router = DefaultWeekRouter(viewController: viewController)
         
         viewController.presenter = presenter

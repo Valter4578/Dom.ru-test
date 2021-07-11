@@ -29,6 +29,7 @@
 		88BC4C0A2699E7BC00A7F289 /* DayForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C092699E7BC00A7F289 /* DayForecast.swift */; };
 		88BC4C0E2699E7F600A7F289 /* HourForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C0D2699E7F600A7F289 /* HourForecast.swift */; };
 		88BC4C182699FF5200A7F289 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C172699FF5200A7F289 /* Coordinates.swift */; };
+		88BC4C33269AFD4500A7F289 /* UIImageView+Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C32269AFD4500A7F289 /* UIImageView+Download.swift */; };
 		C63C765759D10763AF907C98 /* Pods_YandexWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0576C9C8F5BDD21F15280D31 /* Pods_YandexWeather.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		88BC4C092699E7BC00A7F289 /* DayForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayForecast.swift; sourceTree = "<group>"; };
 		88BC4C0D2699E7F600A7F289 /* HourForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourForecast.swift; sourceTree = "<group>"; };
 		88BC4C172699FF5200A7F289 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		88BC4C32269AFD4500A7F289 /* UIImageView+Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Download.swift"; sourceTree = "<group>"; };
 		B6D2E35109CDE1157FEB85BA /* Pods-YandexWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexWeather.release.xcconfig"; path = "Target Support Files/Pods-YandexWeather/Pods-YandexWeather.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +105,7 @@
 		88BC4BA12699730500A7F289 /* YandexWeather */ = {
 			isa = PBXGroup;
 			children = (
+				88BC4C24269AD0A600A7F289 /* Common */,
 				88BC4BDB2699966E00A7F289 /* SupportingFiles */,
 				88BC4BD126997F4600A7F289 /* Service */,
 				88BC4BBF26997BBC00A7F289 /* Entity */,
@@ -298,6 +301,14 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		88BC4C24269AD0A600A7F289 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				88BC4C32269AFD4500A7F289 /* UIImageView+Download.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		DC4B53E927A4F17FE9E19495 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,6 +449,7 @@
 				88BC4BC926997C5F00A7F289 /* Parts.swift in Sources */,
 				88BC4BA52699730500A7F289 /* SceneDelegate.swift in Sources */,
 				88BC4C052699CFCC00A7F289 /* WeekTableViewCell.swift in Sources */,
+				88BC4C33269AFD4500A7F289 /* UIImageView+Download.swift in Sources */,
 				88BC4BE42699993700A7F289 /* DatabaseService.swift in Sources */,
 				88BC4C182699FF5200A7F289 /* Coordinates.swift in Sources */,
 			);

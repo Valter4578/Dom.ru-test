@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (5.4.3)
+  - CocoaLumberjack (3.7.2):
+    - CocoaLumberjack/Core (= 3.7.2)
+  - CocoaLumberjack/Core (3.7.2)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
@@ -9,24 +12,31 @@ PODS:
   - Realm/Headers (10.7.4)
   - RealmSwift (10.7.4):
     - Realm (= 10.7.4)
+  - SVGKit (3.0.0):
+    - CocoaLumberjack (~> 3.0)
 
 DEPENDENCIES:
   - Moya (~> 14.0)
   - RealmSwift
+  - SVGKit
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - CocoaLumberjack
     - Moya
     - Realm
     - RealmSwift
+    - SVGKit
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   Realm: f08ce1a85649a41303ecfe1cbd914c62e9e6d710
   RealmSwift: 60ec49d165f23d040ab48811d8dd177e09baf4d3
+  SVGKit: 1ad7513f8c74d9652f94ed64ddecda1a23864dea
 
-PODFILE CHECKSUM: 1143dc9ae4022a039bceba972d079a7a3b658d75
+PODFILE CHECKSUM: 88803c24ca1a6ff8507d43905cd7ce185971cc04
 
 COCOAPODS: 1.10.1
