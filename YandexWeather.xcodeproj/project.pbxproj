@@ -16,7 +16,7 @@
 		88BC4BC926997C5F00A7F289 /* Parts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4BC826997C5F00A7F289 /* Parts.swift */; };
 		88BC4BCC26997CAD00A7F289 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4BCB26997CAD00A7F289 /* Day.swift */; };
 		88BC4BCF26997CDD00A7F289 /* Hour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4BCE26997CDD00A7F289 /* Hour.swift */; };
-		88BC4BD426997F6900A7F289 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4BD326997F6900A7F289 /* WeatherService.swift */; };
+		88BC4BD426997F6900A7F289 /* WeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4BD326997F6900A7F289 /* WeatherProvider.swift */; };
 		88BC4BD72699828900A7F289 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4BD62699828900A7F289 /* NetworkService.swift */; };
 		88BC4BDF269996E600A7F289 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4BDE269996E600A7F289 /* LocationService.swift */; };
 		88BC4BE42699993700A7F289 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4BE32699993700A7F289 /* DatabaseService.swift */; };
@@ -24,7 +24,7 @@
 		88BC4BF92699A0B700A7F289 /* WeekAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4BF82699A0B700A7F289 /* WeekAssembly.swift */; };
 		88BC4BFC2699A10000A7F289 /* WeekInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4BFB2699A10000A7F289 /* WeekInteractor.swift */; };
 		88BC4BFF2699A10900A7F289 /* WeekPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4BFE2699A10900A7F289 /* WeekPresenter.swift */; };
-		88BC4C022699A13000A7F289 /* WeekRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C012699A13000A7F289 /* WeekRouter.swift */; };
+		88BC4C022699A13000A7F289 /* WeekRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C012699A13000A7F289 /* WeekRouterProtocol.swift */; };
 		88BC4C0A2699E7BC00A7F289 /* DayForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C092699E7BC00A7F289 /* DayForecast.swift */; };
 		88BC4C0E2699E7F600A7F289 /* HourForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C0D2699E7F600A7F289 /* HourForecast.swift */; };
 		88BC4C182699FF5200A7F289 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C172699FF5200A7F289 /* Coordinates.swift */; };
@@ -38,6 +38,8 @@
 		88BC4C4D269C250600A7F289 /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C4C269C250600A7F289 /* ForecastTableViewCell.swift */; };
 		88BC4C53269C2D8B00A7F289 /* DBDayForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C52269C2D8B00A7F289 /* DBDayForecast.swift */; };
 		88BC4C56269C2EC700A7F289 /* DBHourForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C55269C2EC700A7F289 /* DBHourForecast.swift */; };
+		88BC4C5B269C667900A7F289 /* DayProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C5A269C667900A7F289 /* DayProtocols.swift */; };
+		88BC4C5E269C67C600A7F289 /* WeekProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C5D269C67C600A7F289 /* WeekProtocols.swift */; };
 		C63C765759D10763AF907C98 /* Pods_YandexWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0576C9C8F5BDD21F15280D31 /* Pods_YandexWeather.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +57,7 @@
 		88BC4BC826997C5F00A7F289 /* Parts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parts.swift; sourceTree = "<group>"; };
 		88BC4BCB26997CAD00A7F289 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		88BC4BCE26997CDD00A7F289 /* Hour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hour.swift; sourceTree = "<group>"; };
-		88BC4BD326997F6900A7F289 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		88BC4BD326997F6900A7F289 /* WeatherProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherProvider.swift; sourceTree = "<group>"; };
 		88BC4BD62699828900A7F289 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		88BC4BDE269996E600A7F289 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		88BC4BE32699993700A7F289 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
@@ -63,7 +65,7 @@
 		88BC4BF82699A0B700A7F289 /* WeekAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekAssembly.swift; sourceTree = "<group>"; };
 		88BC4BFB2699A10000A7F289 /* WeekInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekInteractor.swift; sourceTree = "<group>"; };
 		88BC4BFE2699A10900A7F289 /* WeekPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPresenter.swift; sourceTree = "<group>"; };
-		88BC4C012699A13000A7F289 /* WeekRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekRouter.swift; sourceTree = "<group>"; };
+		88BC4C012699A13000A7F289 /* WeekRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekRouterProtocol.swift; sourceTree = "<group>"; };
 		88BC4C092699E7BC00A7F289 /* DayForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayForecast.swift; sourceTree = "<group>"; };
 		88BC4C0D2699E7F600A7F289 /* HourForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourForecast.swift; sourceTree = "<group>"; };
 		88BC4C172699FF5200A7F289 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
@@ -77,6 +79,8 @@
 		88BC4C4C269C250600A7F289 /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
 		88BC4C52269C2D8B00A7F289 /* DBDayForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBDayForecast.swift; sourceTree = "<group>"; };
 		88BC4C55269C2EC700A7F289 /* DBHourForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHourForecast.swift; sourceTree = "<group>"; };
+		88BC4C5A269C667900A7F289 /* DayProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayProtocols.swift; sourceTree = "<group>"; };
+		88BC4C5D269C67C600A7F289 /* WeekProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekProtocols.swift; sourceTree = "<group>"; };
 		B6D2E35109CDE1157FEB85BA /* Pods-YandexWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexWeather.release.xcconfig"; path = "Target Support Files/Pods-YandexWeather/Pods-YandexWeather.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,7 +170,7 @@
 		88BC4BD226997F4E00A7F289 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				88BC4BD326997F6900A7F289 /* WeatherService.swift */,
+				88BC4BD326997F6900A7F289 /* WeatherProvider.swift */,
 				88BC4BD62699828900A7F289 /* NetworkService.swift */,
 			);
 			path = Network;
@@ -216,6 +220,7 @@
 				88BC4BEA26999FBE00A7F289 /* Interactor */,
 				88BC4BEB26999FC600A7F289 /* Presenter */,
 				88BC4BEC26999FCE00A7F289 /* Router */,
+				88BC4C5D269C67C600A7F289 /* WeekProtocols.swift */,
 			);
 			path = WeekModule;
 			sourceTree = "<group>";
@@ -247,7 +252,7 @@
 		88BC4BEC26999FCE00A7F289 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				88BC4C012699A13000A7F289 /* WeekRouter.swift */,
+				88BC4C012699A13000A7F289 /* WeekRouterProtocol.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 				88BC4BF02699A00A00A7F289 /* Interactor */,
 				88BC4BEF2699A00200A7F289 /* Presenter */,
 				88BC4BEE26999FFA00A7F289 /* Router */,
+				88BC4C5A269C667900A7F289 /* DayProtocols.swift */,
 			);
 			path = DayModule;
 			sourceTree = "<group>";
@@ -494,13 +500,15 @@
 				88BC4BC626997C2D00A7F289 /* Forcast.swift in Sources */,
 				88BC4BCF26997CDD00A7F289 /* Hour.swift in Sources */,
 				88BC4BF62699A04600A7F289 /* WeekViewController.swift in Sources */,
-				88BC4C022699A13000A7F289 /* WeekRouter.swift in Sources */,
+				88BC4C022699A13000A7F289 /* WeekRouterProtocol.swift in Sources */,
 				88BC4C43269B07FE00A7F289 /* DayRouter.swift in Sources */,
 				88BC4BFF2699A10900A7F289 /* WeekPresenter.swift in Sources */,
-				88BC4BD426997F6900A7F289 /* WeatherService.swift in Sources */,
+				88BC4BD426997F6900A7F289 /* WeatherProvider.swift in Sources */,
 				88BC4C37269B069500A7F289 /* DayViewController.swift in Sources */,
 				88BC4C3D269B07C200A7F289 /* DayInteractor.swift in Sources */,
 				88BC4BA32699730500A7F289 /* AppDelegate.swift in Sources */,
+				88BC4C5E269C67C600A7F289 /* WeekProtocols.swift in Sources */,
+				88BC4C5B269C667900A7F289 /* DayProtocols.swift in Sources */,
 				88BC4BFC2699A10000A7F289 /* WeekInteractor.swift in Sources */,
 				88BC4BC926997C5F00A7F289 /* Parts.swift in Sources */,
 				88BC4BA52699730500A7F289 /* SceneDelegate.swift in Sources */,

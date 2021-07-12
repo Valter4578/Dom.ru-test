@@ -8,12 +8,6 @@
 import Foundation
 import RealmSwift
 
-//struct HourForecast {
-//    let hour: String
-//    let iconUrl: String
-//    let temp: Int
-//}
-
 @objcMembers
 class DBHourForecast: Object {
     dynamic var _id: ObjectId = ObjectId.generate()
@@ -29,7 +23,7 @@ class DBHourForecast: Object {
 extension DBHourForecast {
     func toCore() -> HourForecast {
         return HourForecast(hour: hour,
-                            iconName: iconName,
+                            iconUrl: iconName,
                             temp: temp)
     }
 }

@@ -7,14 +7,14 @@
 
 import Foundation
 
-class WeekAssembly {
+class WeekAssembly: WeekAssemblyProtocol {
     // MARK:- Functions
     func assemble(with viewController: WeekViewController) {
-        let presenter = DefaultWeekPresenter(view: viewController)
+        let presenter = WeekPresenter(view: viewController)
         let networkService = DefaultNetworkService()
         let databaseService = DefaultDatabaseService()
         let locationService = LocationService()
-        let interactor = DefaultWeekInteractor(presenter: presenter,
+        let interactor = WeekInteractor(presenter: presenter,
                                                networkService: networkService,
                                                databaseService: databaseService,
                                                locationService: locationService)

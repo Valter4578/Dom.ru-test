@@ -9,7 +9,7 @@ import UIKit
 
 final class ForecastTableViewCell: UITableViewCell {
     // MARK:- View
-    lazy var forecastLabel: UILabel = {
+    private lazy var forecastLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20)
         label.numberOfLines = 0
@@ -17,7 +17,7 @@ final class ForecastTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var iconImageView: UIImageView = {
+    private var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -33,6 +33,15 @@ final class ForecastTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK:- Configure
+    func configureLabel(with text: String) {
+        forecastLabel.text = text
+    }
+    
+    func configureImageView(with url: URL?) {
+        iconImageView.load(from: url)
     }
     
     // MARK:- Setup

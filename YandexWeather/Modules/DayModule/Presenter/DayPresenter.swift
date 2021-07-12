@@ -7,28 +7,14 @@
 
 import Foundation
 
-protocol DayPresenter: class {
-    var cellId: String { get }
-    var forecast: DayForecast? { get set }
-    var numberOfCells: Int { get }
-    
-    func configureView()
-    func getFormattedCellText(for index: Int) -> String
-    func getIconUrl(for index: Int) -> URL?
-}
-
-class DefaultDayPresenter: DayPresenter {
+class DayPresenter: DayPresenterProtocol {
     // MARK:- Dependencies
-    var interactor: DayInteractor!
+    var interactor: DayInteractorProtocol!
     weak var view: DayView!
-    var router: DayRouter!
+    var router: DayRouterProtocol!
     
     // MARK:- Properties
     var forecast: DayForecast?
-    
-    var cellId: String {
-        return "DayTableViewCell"
-    }
     
     var numberOfCells: Int {
         guard let forecast = forecast else { return 0 }
@@ -53,8 +39,7 @@ class DefaultDayPresenter: DayPresenter {
     
     func getIconUrl(for index: Int) -> URL? {
         guard let forecast = forecast else { return nil }
-        let hour = forecast.hours[index]
-        guard let url = URL(string: "https://yastatic.net/weather/i/icons/blueye/color/svg/\(hour.iconName).svg") else { return nil }
+        guard let url = URL(string: forecast.hours[index].iconUrl) else { return nil }
         return url
     }
     

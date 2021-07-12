@@ -1,5 +1,5 @@
 //
-//  WeatherService.swift
+//  WeatherProvider.swift
 //  YandexWeather
 //
 //  Created by Максим Алексеев on 10.07.2021.
@@ -8,11 +8,11 @@
 import Foundation
 import Moya
 
-enum WeatherService {
+enum WeatherProvider {
     case hourWeater(Coordinates)
 }
 
-extension WeatherService: TargetType {
+extension WeatherProvider: TargetType {
     var baseURL: URL {
         guard let url = URL(string: "https://api.weather.yandex.ru/v2") else { fatalError("Incorrect url") }
         return url

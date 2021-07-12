@@ -7,11 +7,7 @@
 
 import Foundation
 
-protocol DayRouter {
-    
-}
-
-class DefaultDayRouter: DayRouter {
+class DayRouter: DayRouterProtocol {
     // MARK:- Properties
     weak var viewController: DayViewController!
     
@@ -19,6 +15,4 @@ class DefaultDayRouter: DayRouter {
     required init(viewController: DayViewController) {
         self.viewController = viewController
     }
-    
-    
 }

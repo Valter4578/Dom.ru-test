@@ -9,7 +9,7 @@ import Foundation
 
 struct HourForecast {
     let hour: String
-    let iconName: String
+    let iconUrl: String
     let temp: Int
 }
 
@@ -17,7 +17,7 @@ extension HourForecast {
     func toDb() -> DBHourForecast {
         let dbHourForecast = DBHourForecast()
         dbHourForecast.hour = hour
-        dbHourForecast.iconName = iconName
+        dbHourForecast.iconName = iconUrl
         dbHourForecast.temp = temp
         return dbHourForecast
     }

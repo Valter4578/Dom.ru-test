@@ -24,7 +24,7 @@ class DBDayForecast: Object {
 extension DBDayForecast {
     func toCore() -> DayForecast {
         return DayForecast(day: day,
-                           dayIconName: dayIconName,
+                           dayIconUrl: dayIconName,
                            dayTemperature: dayTemperature,
                            hours: hours.map { $0.toCore() } )
     }

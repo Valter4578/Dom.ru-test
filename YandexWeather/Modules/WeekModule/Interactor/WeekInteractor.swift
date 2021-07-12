@@ -7,13 +7,9 @@
 
 import Foundation
 
-protocol WeekInteractor {
-    func getWeather()
-}
-
-class DefaultWeekInteractor: WeekInteractor {
+class WeekInteractor: WeekInteractorProtocol {
     // MARK:- Dependencies
-    weak var presenter: WeekPresenter!
+    weak var presenter: WeekPresenterProtocol!
     private let networkService: NetworkService!
     private let databaseService: DatabaseService!
     private let locationService: LocationService!
@@ -64,7 +60,7 @@ class DefaultWeekInteractor: WeekInteractor {
     }
     
     // MARK:- Init
-    required init(presenter: WeekPresenter, networkService: NetworkService, databaseService: DatabaseService, locationService: LocationService) {
+    required init(presenter: WeekPresenterProtocol, networkService: NetworkService, databaseService: DatabaseService, locationService: LocationService) {
         self.presenter = presenter
         self.networkService = networkService
         self.databaseService = databaseService
@@ -73,7 +69,7 @@ class DefaultWeekInteractor: WeekInteractor {
     }
 }
 
-extension DefaultWeekInteractor: LocationServiceDelegate {
+extension WeekInteractor: LocationServiceDelegate {
     func locationDidUpdate(lat: Double, lon: Double) {
         guard coordinates?.lat != lat, coordinates?.lon != lon else { return }
         coordinates = Coordinates(lat: lat, lon: lon)

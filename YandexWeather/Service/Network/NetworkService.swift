@@ -14,7 +14,7 @@ protocol NetworkService {
 
 class DefaultNetworkService: NetworkService {
     // MARK:- Private properties
-    private var provider = MoyaProvider<WeatherService>()
+    private var provider = MoyaProvider<WeatherProvider>()
     
     // MARK:- Functions
     func getForecast(coordinates: Coordinates,complete: @escaping (Result<ForecastInfo, Error>) -> ()) {

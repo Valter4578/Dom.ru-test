@@ -7,11 +7,7 @@
 
 import Foundation
 
-protocol DayInteractor {
-    
-}
-
-class DefaultDayInteractor: DayInteractor {
+class DayInteractor: DayInteractorProtocol {
     // MARK:- Dependencies
-    weak var presenter: DayPresenter! 
+    weak var presenter: DayPresenterProtocol! 
 }

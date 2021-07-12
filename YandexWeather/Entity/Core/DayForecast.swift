@@ -9,7 +9,7 @@ import Foundation
 
 struct DayForecast {
     let day: String
-    let dayIconName: String
+    let dayIconUrl: String
     let dayTemperature: Int
     let hours: [HourForecast]
 }
@@ -17,7 +17,7 @@ struct DayForecast {
 extension DayForecast {
     func toDb() -> DBDayForecast {
         let dbDayForecast = DBDayForecast()
-        dbDayForecast.dayIconName = dayIconName
+        dbDayForecast.dayIconName = dayIconUrl
         dbDayForecast.day = day
         dbDayForecast.dayTemperature = dayTemperature
         

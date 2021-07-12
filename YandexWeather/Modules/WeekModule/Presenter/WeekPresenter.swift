@@ -7,33 +7,17 @@
 
 import UIKit
 
-protocol WeekPresenter: class {
-    var cellId: String { get }
-    var forecasts: [DayForecast] { get }
-    
-    func configureView()
-    func getForrmatedCellTitle(for index: Int) -> String
-    func getImageUrl(for index: Int) -> URL?
-    func handleForecast(_ forecasts: [DayForecast])
-    func handleError(_ error: Error)
-    func didSelectCell(with index: Int)
-}
-
-class DefaultWeekPresenter: WeekPresenter {
+class WeekPresenter: WeekPresenterProtocol {
     // MARK:- Dependencies
-    weak var view: WeekView!
-    var interactor: WeekInteractor!
-    var router: WeekRouter! 
+    weak var view: WeekViewProtocol!
+    var interactor: WeekInteractorProtocol!
+    var router: WeekRouterProtocol! 
     
     // MARK:- Properties
-    var cellId: String {
-        return "WeekCellId"
-    }
-    
     private(set) var forecasts: [DayForecast] = []
 
     // MARK:- Inits
-    required init(view: WeekView) {
+    required init(view: WeekViewProtocol) {
         self.view = view
     }
     
@@ -43,9 +27,8 @@ class DefaultWeekPresenter: WeekPresenter {
     }
     
     func getImageUrl(for index: Int) -> URL? {
-        let imageName = forecasts[index].dayIconName
-        guard let url = URL(string: "https://yastatic.net/weather/i/icons/blueye/color/svg/\(imageName).svg") else { return nil }
-        
+        let imageUrl = forecasts[index].dayIconUrl
+        guard let url = URL(string: imageUrl) else { return nil }
         return url
     }
     

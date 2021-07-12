@@ -7,27 +7,20 @@
 
 import UIKit
 
-protocol WeekView: class {
-    func configureTitle(_ title: String)
-    func reloadData()
-    func showAlert(with text: String)
-}
-
-class WeekViewController: UIViewController, WeekView {
+class WeekViewController: UIViewController {
     // MARK:- Dependencies
-    var presenter: WeekPresenter!
-    var assembly = WeekAssembly()
+    var presenter: WeekPresenterProtocol!
+    var assembly: WeekAssemblyProtocol!
     
     // MARK:- Private properties
-    
-    // MARK:- Properties
+    private let cellId = "WeekTableViewCellId"
     
     // MARK:- Views
     lazy var forecastTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
-        tableView.register(ForecastTableViewCell.self, forCellReuseIdentifier: presenter.cellId)
+        tableView.register(ForecastTableViewCell.self, forCellReuseIdentifier: cellId)
         tableView.dataSource = self
         return tableView
     }()
@@ -35,12 +28,10 @@ class WeekViewController: UIViewController, WeekView {
     // MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         assembly.assemble(with: self)
         setupTableView()
         presenter.configureView()
-        
     }
     
     // MARK:- Setup
@@ -53,24 +44,6 @@ class WeekViewController: UIViewController, WeekView {
             forecastTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
-    
-    // MARK:- WeekView
-    func configureTitle(_ title: String) {
-        self.title = title
-    }
-    
-    func showAlert(with text: String) {
-        let alertController = UIAlertController(title: "Error", message: text, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true)
-    }
-    
-    func reloadData() {
-        forecastTableView.reloadData()
-    }
-    
-    // MARK:- Functions
 }
 
 // MARK:- UITableViewDataSource
@@ -80,11 +53,10 @@ extension WeekViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: presenter.cellId, for: indexPath) as? ForecastTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? ForecastTableViewCell else { return UITableViewCell() }
         
-        cell.forecastLabel.text = presenter.getForrmatedCellTitle(for: indexPath.row)
-        let url = presenter.getImageUrl(for: indexPath.row)
-        cell.iconImageView.load(from: url)
+        cell.configureLabel(with: presenter.getForrmatedCellTitle(for: indexPath.row))
+        cell.configureImageView(with: presenter.getImageUrl(for: indexPath.row))
         
         return cell
     }    
@@ -102,3 +74,21 @@ extension WeekViewController: UITableViewDelegate {
     }
 }
 
+// MARK:- WeekViewProtocol
+extension WeekViewController: WeekViewProtocol {
+    func configureTitle(_ title: String) {
+        self.title = title
+    }
+    
+    func showAlert(with text: String) {
+        let alertController = UIAlertController(title: "Error", message: text, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
+    }
+    
+    func reloadData() {
+        forecastTableView.reloadData()
+    }
+    
+}

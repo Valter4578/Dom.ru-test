@@ -7,11 +7,11 @@
 
 import Foundation
 
-class DayAssembly {
+class DayAssembly: DayAssemblyProtocol {
     func assemble(with viewController: DayViewController, forecast: DayForecast) {
-        let presenter = DefaultDayPresenter(view: viewController)
-        let interactor = DefaultDayInteractor()
-        let router = DefaultDayRouter(viewController: viewController)
+        let presenter = DayPresenter(view: viewController)
+        let interactor = DayInteractor()
+        let router = DayRouter(viewController: viewController)
         
         viewController.presenter = presenter
         presenter.interactor = interactor

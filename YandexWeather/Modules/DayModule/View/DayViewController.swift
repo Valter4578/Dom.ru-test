@@ -7,23 +7,19 @@
 
 import UIKit
 
-protocol DayView: class {
-    func configureTitle(_ title: String)
-}
-
-class DayViewController: UIViewController, DayView {
+class DayViewController: UIViewController {
     // MARK:- Dependencies
-    var assembly = DayAssembly()
-    var presenter: DayPresenter!
+    var assembly: DayAssemblyProtocol!
+    var presenter: DayPresenterProtocol!
     
-    // MARK:- Properties
-    var forecast: DayForecast? 
+    // MARK:- Private Properties
+    private let cellId = "DayTableViewCellId"
     
     // MARK:- Views
     lazy var forecastTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(ForecastTableViewCell.self, forCellReuseIdentifier: presenter.cellId)
+        tableView.register(ForecastTableViewCell.self, forCellReuseIdentifier: cellId)
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
@@ -35,11 +31,6 @@ class DayViewController: UIViewController, DayView {
         
         setupTableView()
         presenter.configureView()
-    }
-    
-    // MARK:- Configure
-    func configureTitle(_ text: String) {
-        self.title = text
     }
     
     // MARK:- Setup
@@ -71,9 +62,16 @@ extension DayViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: presenter.cellId, for: indexPath) as? ForecastTableViewCell else { fatalError("Couldn't dequeue ForecastTableViewCell") }
-        cell.forecastLabel.text = presenter.getFormattedCellText(for: indexPath.row)
-        cell.iconImageView.load(from: presenter.getIconUrl(for: indexPath.row))
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? ForecastTableViewCell else { fatalError("Couldn't dequeue ForecastTableViewCell") }
+        cell.configureLabel(with: presenter.getFormattedCellText(for: indexPath.row))
+        cell.configureImageView(with: presenter.getIconUrl(for: indexPath.row))
         return cell
+    }
+}
+
+// MARK:- DayViewProtocol 
+extension DayViewController: DayView {
+    func configureTitle(_ text: String) {
+        self.title = text
     }
 }
