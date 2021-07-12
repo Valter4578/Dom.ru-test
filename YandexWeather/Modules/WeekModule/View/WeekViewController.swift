@@ -49,7 +49,7 @@ class WeekViewController: UIViewController {
 // MARK:- UITableViewDataSource
 extension WeekViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.forecasts.count
+        return presenter.numberOfCells
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,5 +90,4 @@ extension WeekViewController: WeekViewProtocol {
     func reloadData() {
         forecastTableView.reloadData()
     }
-    
 }

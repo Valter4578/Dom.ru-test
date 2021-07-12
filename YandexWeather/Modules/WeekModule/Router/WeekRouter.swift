@@ -7,8 +7,7 @@
 
 import Foundation
 
-
-class DefaultWeekRouter: WeekRouterProtocol {
+class WeekRouter: WeekRouterProtocol {
     // MARK:- Properties 
     weak var viewController: WeekViewController!
     

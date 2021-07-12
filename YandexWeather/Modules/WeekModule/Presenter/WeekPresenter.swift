@@ -14,8 +14,11 @@ class WeekPresenter: WeekPresenterProtocol {
     var router: WeekRouterProtocol! 
     
     // MARK:- Properties
-    private(set) var forecasts: [DayForecast] = []
+    private var forecasts: [DayForecast] = []
 
+    var numberOfCells: Int {
+        return forecasts.count
+    }
     // MARK:- Inits
     required init(view: WeekViewProtocol) {
         self.view = view

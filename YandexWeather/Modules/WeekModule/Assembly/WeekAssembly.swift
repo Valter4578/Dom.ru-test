@@ -19,7 +19,7 @@ class WeekAssembly: WeekAssemblyProtocol {
                                                databaseService: databaseService,
                                                locationService: locationService)
         
-        let router = DefaultWeekRouter(viewController: viewController)
+        let router = WeekRouter(viewController: viewController)
         
         viewController.presenter = presenter
         presenter.interactor = interactor

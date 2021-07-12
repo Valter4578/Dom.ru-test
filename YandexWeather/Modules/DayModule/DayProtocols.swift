@@ -12,7 +12,6 @@ protocol DayRouterProtocol {
 }
 
 protocol DayPresenterProtocol: AnyObject {
-    var forecast: DayForecast? { get set }
     var numberOfCells: Int { get }
     
     func configureView()

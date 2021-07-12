@@ -24,7 +24,7 @@
 		88BC4BF92699A0B700A7F289 /* WeekAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4BF82699A0B700A7F289 /* WeekAssembly.swift */; };
 		88BC4BFC2699A10000A7F289 /* WeekInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4BFB2699A10000A7F289 /* WeekInteractor.swift */; };
 		88BC4BFF2699A10900A7F289 /* WeekPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4BFE2699A10900A7F289 /* WeekPresenter.swift */; };
-		88BC4C022699A13000A7F289 /* WeekRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C012699A13000A7F289 /* WeekRouterProtocol.swift */; };
+		88BC4C022699A13000A7F289 /* WeekRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C012699A13000A7F289 /* WeekRouter.swift */; };
 		88BC4C0A2699E7BC00A7F289 /* DayForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C092699E7BC00A7F289 /* DayForecast.swift */; };
 		88BC4C0E2699E7F600A7F289 /* HourForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C0D2699E7F600A7F289 /* HourForecast.swift */; };
 		88BC4C182699FF5200A7F289 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC4C172699FF5200A7F289 /* Coordinates.swift */; };
@@ -65,7 +65,7 @@
 		88BC4BF82699A0B700A7F289 /* WeekAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekAssembly.swift; sourceTree = "<group>"; };
 		88BC4BFB2699A10000A7F289 /* WeekInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekInteractor.swift; sourceTree = "<group>"; };
 		88BC4BFE2699A10900A7F289 /* WeekPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPresenter.swift; sourceTree = "<group>"; };
-		88BC4C012699A13000A7F289 /* WeekRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekRouterProtocol.swift; sourceTree = "<group>"; };
+		88BC4C012699A13000A7F289 /* WeekRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekRouter.swift; sourceTree = "<group>"; };
 		88BC4C092699E7BC00A7F289 /* DayForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayForecast.swift; sourceTree = "<group>"; };
 		88BC4C0D2699E7F600A7F289 /* HourForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourForecast.swift; sourceTree = "<group>"; };
 		88BC4C172699FF5200A7F289 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
@@ -252,7 +252,7 @@
 		88BC4BEC26999FCE00A7F289 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				88BC4C012699A13000A7F289 /* WeekRouterProtocol.swift */,
+				88BC4C012699A13000A7F289 /* WeekRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -500,7 +500,7 @@
 				88BC4BC626997C2D00A7F289 /* Forcast.swift in Sources */,
 				88BC4BCF26997CDD00A7F289 /* Hour.swift in Sources */,
 				88BC4BF62699A04600A7F289 /* WeekViewController.swift in Sources */,
-				88BC4C022699A13000A7F289 /* WeekRouterProtocol.swift in Sources */,
+				88BC4C022699A13000A7F289 /* WeekRouter.swift in Sources */,
 				88BC4C43269B07FE00A7F289 /* DayRouter.swift in Sources */,
 				88BC4BFF2699A10900A7F289 /* WeekPresenter.swift in Sources */,
 				88BC4BD426997F6900A7F289 /* WeatherProvider.swift in Sources */,

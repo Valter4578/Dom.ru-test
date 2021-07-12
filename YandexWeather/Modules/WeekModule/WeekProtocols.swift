@@ -20,7 +20,7 @@ protocol WeekInteractorProtocol {
 }
 
 protocol WeekPresenterProtocol: AnyObject {
-    var forecasts: [DayForecast] { get }
+    var numberOfCells: Int { get }
     
     func configureView()
     func getForrmatedCellTitle(for index: Int) -> String
@@ -30,8 +30,7 @@ protocol WeekPresenterProtocol: AnyObject {
     func didSelectCell(with index: Int)
 }
 
-
-protocol WeekViewProtocol: class {
+protocol WeekViewProtocol: AnyObject {
     func configureTitle(_ title: String)
     func reloadData()
     func showAlert(with text: String)
