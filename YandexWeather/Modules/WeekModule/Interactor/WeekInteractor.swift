@@ -13,7 +13,7 @@ protocol WeekInteractor {
 
 class DefaultWeekInteractor: WeekInteractor {
     // MARK:- Dependencies
-    weak var presenter: WeekPresenter! 
+    weak var presenter: WeekPresenter!
     private let networkService: NetworkService!
     private let databaseService: DatabaseService!
     private let locationService: LocationService!
@@ -27,24 +27,15 @@ class DefaultWeekInteractor: WeekInteractor {
     
     // MARK:- Functions
     func getWeather() {
-        DispatchQueue.global(qos: .utility).async {
-            let dbDayForecasts = self.databaseService.fetch(of: DBDayForecast.self)
-            if !dbDayForecasts.isEmpty {
-                let dayForecasts = dbDayForecasts.map { $0.toCore() }
-                self.presenter.handleForecast(dayForecasts)
-            }
-        }
+        obtainForecast()
     
         guard let coordinates = coordinates else { return }
         networkService.getForecast(coordinates: coordinates) { result in
             switch result {
             case .success(let forecastInfo):
-                DispatchQueue.global(qos: .utility).async {
-                    self.databaseService.deleteAll()
-                    let dbDayForecasts = forecastInfo.asDayForecasts().map { $0.toDb() }
-                    self.databaseService.save(objects: dbDayForecasts)
-                }
                 let dayForecasts = forecastInfo.asDayForecasts()
+                let dbDayForecasts = dayForecasts.map { $0.toDb() }
+                self.save(forecasts: dbDayForecasts)
                 self.presenter.handleForecast(dayForecasts)
             case .failure(let error):
                 self.presenter.handleError(error)
@@ -53,6 +44,24 @@ class DefaultWeekInteractor: WeekInteractor {
     }
     
     // MARK:- Private functions
+    private func obtainForecast() {
+        DispatchQueue.global(qos: .utility).async {
+            let dbDayForecasts = self.databaseService.fetch(of: DBDayForecast.self)
+            if !dbDayForecasts.isEmpty {
+                let dayForecasts = dbDayForecasts
+                    .map { $0.toCore() }
+                    .sorted(by: { $0.day < $1.day } )
+                self.presenter.handleForecast(dayForecasts)
+            }
+        }
+    }
+    
+    private func save(forecasts: [DBDayForecast]) {
+        DispatchQueue.global(qos: .utility).async {
+            self.databaseService.deleteAll()
+            self.databaseService.save(objects: forecasts)
+        }
+    }
     
     // MARK:- Init
     required init(presenter: WeekPresenter, networkService: NetworkService, databaseService: DatabaseService, locationService: LocationService) {
