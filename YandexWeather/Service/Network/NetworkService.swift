@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 protocol NetworkService {
-    func getHourForecast(coordinates: Coordinates,complete: @escaping (Result<ForecastInfo, Error>) -> ())
+    func getForecast(coordinates: Coordinates,complete: @escaping (Result<ForecastInfo, Error>) -> ())
 }
 
 class DefaultNetworkService: NetworkService {
@@ -17,7 +17,7 @@ class DefaultNetworkService: NetworkService {
     private var provider = MoyaProvider<WeatherService>()
     
     // MARK:- Functions
-    func getHourForecast(coordinates: Coordinates,complete: @escaping (Result<ForecastInfo, Error>) -> ()) {
+    func getForecast(coordinates: Coordinates,complete: @escaping (Result<ForecastInfo, Error>) -> ()) {
         provider.request(.hourWeater(coordinates)) { response in
             switch response {
             case .success(let result):

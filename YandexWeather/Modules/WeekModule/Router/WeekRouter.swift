@@ -8,7 +8,7 @@
 import Foundation
 
 protocol WeekRouter {
-    
+    func openDetail(with forecast: DayForecast)
 }
 
 class DefaultWeekRouter: WeekRouter {
@@ -20,5 +20,10 @@ class DefaultWeekRouter: WeekRouter {
         self.viewController = viewController
     }
     
-    
+    // MARK:- Functions
+    func openDetail(with forecast: DayForecast) {
+        let dayViewController = DayViewController()
+        dayViewController.assembly.assemble(with: dayViewController, forecast: forecast)
+        viewController.navigationController?.pushViewController(dayViewController, animated: true)
+    }
 }

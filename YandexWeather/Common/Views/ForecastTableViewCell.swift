@@ -1,16 +1,15 @@
 //
-//  WeekTableViewCell.swift
+//  ForecastTableViewCell.swift
 //  YandexWeather
 //
-//  Created by Максим Алексеев on 10.07.2021.
+//  Created by Максим Алексеев on 12.07.2021.
 //
 
 import UIKit
-import WebKit
 
-final class WeekTableViewCell: UITableViewCell {
+final class ForecastTableViewCell: UITableViewCell {
     // MARK:- View
-    lazy var tempLabel: UILabel = {
+    lazy var forecastLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20)
         label.numberOfLines = 0
@@ -48,12 +47,12 @@ final class WeekTableViewCell: UITableViewCell {
     }
     
     private func setupLabel() {
-        addSubview(tempLabel)
+        addSubview(forecastLabel)
         NSLayoutConstraint.activate([
-            tempLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
-            tempLabel.topAnchor.constraint(equalTo: topAnchor),
-            tempLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            tempLabel.trailingAnchor.constraint(equalTo: iconImageView.leadingAnchor, constant: -5)
+            forecastLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
+            forecastLabel.topAnchor.constraint(equalTo: topAnchor),
+            forecastLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            forecastLabel.trailingAnchor.constraint(equalTo: iconImageView.leadingAnchor, constant: -5)
         ])
     }
 }

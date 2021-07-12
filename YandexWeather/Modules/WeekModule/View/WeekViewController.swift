@@ -27,7 +27,7 @@ class WeekViewController: UIViewController, WeekView {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
-        tableView.register(WeekTableViewCell.self, forCellReuseIdentifier: presenter.cellId)
+        tableView.register(ForecastTableViewCell.self, forCellReuseIdentifier: presenter.cellId)
         tableView.dataSource = self
         return tableView
     }()
@@ -69,6 +69,7 @@ class WeekViewController: UIViewController, WeekView {
     func reloadData() {
         forecastTableView.reloadData()
     }
+    
     // MARK:- Functions
 }
 
@@ -79,11 +80,12 @@ extension WeekViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: presenter.cellId, for: indexPath) as? WeekTableViewCell else { return UITableViewCell() }
-        cell.tempLabel.text = presenter.getForrmatedCellTitle(for: indexPath.row)
-        if let url = presenter.getImageUrl(for: indexPath.row) {
-            cell.iconImageView.load(from: url)
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: presenter.cellId, for: indexPath) as? ForecastTableViewCell else { return UITableViewCell() }
+        
+        cell.forecastLabel.text = presenter.getForrmatedCellTitle(for: indexPath.row)
+        let url = presenter.getImageUrl(for: indexPath.row)
+        cell.iconImageView.load(from: url)
+        
         return cell
     }    
 }
@@ -92,6 +94,10 @@ extension WeekViewController: UITableViewDataSource {
 extension WeekViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectCell(with: indexPath.row)
     }
 }
 

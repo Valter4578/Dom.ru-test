@@ -12,10 +12,11 @@ protocol WeekPresenter: class {
     var forecasts: [DayForecast] { get }
     
     func configureView()
-    func getForrmatedCellTitle(for index: Int) -> String?
+    func getForrmatedCellTitle(for index: Int) -> String
     func getImageUrl(for index: Int) -> URL?
     func handleForecast(_ forecast: ForecastInfo)
-    func handleError(_ error: Error) 
+    func handleError(_ error: Error)
+    func didSelectCell(with index: Int)
 }
 
 class DefaultWeekPresenter: WeekPresenter {
@@ -48,14 +49,11 @@ class DefaultWeekPresenter: WeekPresenter {
         return url
     }
     
-    func getForrmatedCellTitle(for index: Int) -> String? {
+    func getForrmatedCellTitle(for index: Int) -> String {
         let formatter  = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
         let forecast = forecasts[index]
-        guard let date = formatter.date(from: forecast.day) else { return nil }
-        
-        let day = Calendar.current.component(.weekday, from: date)
-        let dayOfTheWeek = Calendar.current.weekdaySymbols[day - 1]
+
+        guard let dayOfTheWeek = formatter.weekday(from: forecast.day) else { return "" }
         return "\(dayOfTheWeek): \(forecast.dayTemperature)"
      }
     
@@ -66,5 +64,9 @@ class DefaultWeekPresenter: WeekPresenter {
     
     func handleError(_ error: Error) {
         view.showAlert(with: error.localizedDescription)
+    }
+    
+    func didSelectCell(with index: Int) {
+        router.openDetail(with: forecasts[index])
     }
 }

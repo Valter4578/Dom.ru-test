@@ -28,7 +28,7 @@ class DefaultWeekInteractor: WeekInteractor {
     // MARK:- Functions
     func getWeather() {
         guard let coordinates = coordinates else { return }
-        networkService.getHourForecast(coordinates: coordinates) { result in
+        networkService.getForecast(coordinates: coordinates) { result in
             switch result {
             case .success(let forecastInfo):
                 self.presenter.handleForecast(forecastInfo)
