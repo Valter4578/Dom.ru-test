@@ -9,9 +9,22 @@ import Foundation
 
 struct DayForecast {
     let day: String
-    let dayIconUrl: String
+    let dayIconName: String
     let dayTemperature: Int
     let hours: [HourForecast]
 }
 
-
+extension DayForecast {
+    func toDb() -> DBDayForecast {
+        let dbDayForecast = DBDayForecast()
+        dbDayForecast.dayIconName = dayIconName
+        dbDayForecast.day = day
+        dbDayForecast.dayTemperature = dayTemperature
+        
+        hours.forEach {
+            dbDayForecast.hours.append($0.toDb())
+        }
+        
+        return dbDayForecast
+    }
+}

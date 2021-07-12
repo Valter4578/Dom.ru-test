@@ -15,11 +15,11 @@ extension ForecastInfo {
     func asDayForecasts() -> [DayForecast] {
         return forecasts.map {
             DayForecast(day: $0.date,
-                        dayIconUrl: $0.parts.dayShort.icon,
+                        dayIconName: $0.parts.dayShort.icon,
                         dayTemperature: $0.parts.dayShort.temp,
                         hours: $0.hours.map {
                             HourForecast(hour: $0.hour,
-                                             iconUrl: $0.icon,
+                                             iconName: $0.icon,
                                              temp: $0.temp)
                         })
         }

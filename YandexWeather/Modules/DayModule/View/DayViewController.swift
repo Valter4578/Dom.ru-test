@@ -38,8 +38,8 @@ class DayViewController: UIViewController, DayView {
     }
     
     // MARK:- Configure
-    func configureTitle(_ title: String) {
-        navigationController?.title = title
+    func configureTitle(_ text: String) {
+        self.title = text
     }
     
     // MARK:- Setup
@@ -57,6 +57,10 @@ class DayViewController: UIViewController, DayView {
 extension DayViewController: UITableViewDelegate  {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

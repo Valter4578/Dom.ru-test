@@ -97,6 +97,7 @@ extension WeekViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         presenter.didSelectCell(with: indexPath.row)
     }
 }

@@ -27,11 +27,25 @@ class DefaultWeekInteractor: WeekInteractor {
     
     // MARK:- Functions
     func getWeather() {
+        DispatchQueue.global(qos: .utility).async {
+            let dbDayForecasts = self.databaseService.fetch(of: DBDayForecast.self)
+            if !dbDayForecasts.isEmpty {
+                let dayForecasts = dbDayForecasts.map { $0.toCore() }
+                self.presenter.handleForecast(dayForecasts)
+            }
+        }
+    
         guard let coordinates = coordinates else { return }
         networkService.getForecast(coordinates: coordinates) { result in
             switch result {
             case .success(let forecastInfo):
-                self.presenter.handleForecast(forecastInfo)
+                DispatchQueue.global(qos: .utility).async {
+                    self.databaseService.deleteAll()
+                    let dbDayForecasts = forecastInfo.asDayForecasts().map { $0.toDb() }
+                    self.databaseService.save(objects: dbDayForecasts)
+                }
+                let dayForecasts = forecastInfo.asDayForecasts()
+                self.presenter.handleForecast(dayForecasts)
             case .failure(let error):
                 self.presenter.handleError(error)
             }

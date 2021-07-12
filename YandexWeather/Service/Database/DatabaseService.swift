@@ -14,6 +14,7 @@ protocol DatabaseService {
     func delete<T: Object>(object: T)
     func delete<T: Object>(objects: [T])
     func deleteAll<T: Object>(of type: T.Type)
+    func deleteAll()
     
     func fetch<T: Object>(of type: T.Type) -> [T]
 }
@@ -63,6 +64,13 @@ class DefaultDatabaseService: DatabaseService {
         let objects = realm.objects(type)
         try! realm.write {
             realm.delete(objects)
+        }
+    }
+    
+    func deleteAll() {
+        let realm = defaultRealm()
+        try! realm.write {
+            realm.deleteAll()
         }
     }
     

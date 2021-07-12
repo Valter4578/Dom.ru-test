@@ -54,7 +54,7 @@ class DefaultDayPresenter: DayPresenter {
     func getIconUrl(for index: Int) -> URL? {
         guard let forecast = forecast else { return nil }
         let hour = forecast.hours[index]
-        guard let url = URL(string: "https://yastatic.net/weather/i/icons/blueye/color/svg/\(hour.iconUrl).svg") else { return nil }
+        guard let url = URL(string: "https://yastatic.net/weather/i/icons/blueye/color/svg/\(hour.iconName).svg") else { return nil }
         return url
     }
     

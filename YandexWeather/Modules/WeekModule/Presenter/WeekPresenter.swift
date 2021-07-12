@@ -14,7 +14,7 @@ protocol WeekPresenter: class {
     func configureView()
     func getForrmatedCellTitle(for index: Int) -> String
     func getImageUrl(for index: Int) -> URL?
-    func handleForecast(_ forecast: ForecastInfo)
+    func handleForecast(_ forecasts: [DayForecast])
     func handleError(_ error: Error)
     func didSelectCell(with index: Int)
 }
@@ -43,7 +43,7 @@ class DefaultWeekPresenter: WeekPresenter {
     }
     
     func getImageUrl(for index: Int) -> URL? {
-        let imageName = forecasts[index].dayIconUrl
+        let imageName = forecasts[index].dayIconName
         guard let url = URL(string: "https://yastatic.net/weather/i/icons/blueye/color/svg/\(imageName).svg") else { return nil }
         
         return url
@@ -57,9 +57,11 @@ class DefaultWeekPresenter: WeekPresenter {
         return "\(dayOfTheWeek): \(forecast.dayTemperature)"
      }
     
-    func handleForecast(_ forecast: ForecastInfo) {
-        forecasts = forecast.asDayForecasts()
-        view.reloadData()
+    func handleForecast(_ forecasts: [DayForecast]) {
+        DispatchQueue.main.async {
+            self.forecasts = forecasts
+            self.view.reloadData()
+        }
     }
     
     func handleError(_ error: Error) {
